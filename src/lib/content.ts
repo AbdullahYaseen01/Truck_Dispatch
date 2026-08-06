@@ -1,27 +1,38 @@
 export const servicesOverview = [
   {
     title: "Dispatch",
-    description: "Dedicated personal dispatchers securing high-paying freight and negotiating top rates.",
+    description:
+      "Dedicated personal dispatchers securing high-paying freight and negotiating top rates.",
+    icon: "dispatch" as const,
   },
   {
     title: "Insurance",
-    description: "Guidance connecting carriers with trusted providers for liability, cargo, and more.",
+    description:
+      "Guidance connecting carriers with trusted providers for liability, cargo, and more.",
+    icon: "shield" as const,
   },
   {
     title: "Factoring",
-    description: "Help selecting and setting up reliable factoring partners for faster cash flow.",
+    description:
+      "Help selecting and setting up reliable factoring partners for faster cash flow.",
+    icon: "cash" as const,
   },
   {
     title: "Paperwork",
-    description: "Invoice prep, POD processing, detention requests, and complete document support.",
+    description:
+      "Invoice prep, POD processing, detention requests, and complete document support.",
+    icon: "docs" as const,
   },
   {
     title: "Route Planning",
-    description: "Fuel-efficient routing, lane planning, and return-load strategy that cut empty miles.",
+    description:
+      "Fuel-efficient routing, lane planning, and return-load strategy that cut empty miles.",
+    icon: "route" as const,
   },
   {
     title: "24/7 Support",
     description: "Around-the-clock coordination so drivers stay focused on the road.",
+    icon: "clock" as const,
   },
 ];
 
@@ -170,16 +181,26 @@ export const processSteps = [
   {
     step: "01",
     title: "Register",
-    description: "Submit your carrier details, equipment, and documents through our secure sign-up form.",
+    description:
+      "Submit your carrier details, equipment, and documents through our secure sign-up form.",
   },
   {
     step: "02",
     title: "We Review",
-    description: "Our team verifies authority, insurance, and equipment so we can match the right lanes.",
+    description:
+      "Our team verifies authority, insurance, and equipment so we can match the right lanes.",
   },
   {
     step: "03",
     title: "Start Dispatching",
-    description: "Get a dedicated dispatcher and full carrier support — you drive, we handle the rest.",
+    description:
+      "Get a dedicated dispatcher and full carrier support — you drive, we handle the rest.",
   },
+];
+
+export const trustStats = [
+  { value: "24/7", label: "Dispatch Support" },
+  { value: "USA", label: "Nationwide Coverage" },
+  { value: "0", label: "Forced Dispatch" },
+  { value: "1", label: "Dedicated Dispatcher" },
 ];

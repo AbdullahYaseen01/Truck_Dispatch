@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import { IconArrow, IconCheck } from "@/components/Icons";
 import {
   backOfficeServices,
   carrierSupport,
@@ -20,25 +22,31 @@ function ServiceBlock({
   title,
   intro,
   items,
+  delay = 0,
 }: {
   title: string;
   intro?: string;
   items: string[];
+  delay?: number;
 }) {
   return (
-    <div className="border border-border bg-white p-8">
-      <h2 className="font-display text-2xl font-bold text-navy">{title}</h2>
-      {intro && <p className="mt-3 text-sm leading-relaxed text-slate">{intro}</p>}
-      <div className="section-rule mt-4" />
-      <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-2 text-sm text-slate">
-            <span className="mt-1 text-orange">•</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Reveal delay={delay}>
+      <div className="card-lift rounded-2xl border border-border bg-white p-6 shadow-sm shadow-navy/5 sm:p-8">
+        <h2 className="font-display text-2xl font-bold text-navy">{title}</h2>
+        {intro && <p className="mt-3 text-sm leading-relaxed text-slate">{intro}</p>}
+        <div className="section-rule mt-4" />
+        <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+          {items.map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-slate">
+              <span className="mt-0.5 text-orange">
+                <IconCheck className="h-4 w-4" />
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
   );
 }
 
@@ -52,38 +60,41 @@ export default function ServicesPage() {
       />
 
       <section className="bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 py-16 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-12 sm:px-5 sm:py-16 lg:px-8">
           <ServiceBlock title="Dispatch Services" items={dispatchServices} />
-          <ServiceBlock title="Carrier Support" items={carrierSupport} />
-          <ServiceBlock title="Back Office Services" items={backOfficeServices} />
+          <ServiceBlock title="Carrier Support" items={carrierSupport} delay={40} />
+          <ServiceBlock title="Back Office Services" items={backOfficeServices} delay={60} />
           <ServiceBlock
             title="Insurance Assistance"
             intro="We help carriers connect with trusted insurance providers for:"
             items={insuranceAssistance}
+            delay={80}
           />
           <ServiceBlock
             title="Factoring Assistance"
             intro="We help carriers choose and set up reliable factoring companies. Services include:"
             items={factoringAssistance}
+            delay={100}
           />
-          <ServiceBlock title="Route Management" items={routeManagement} />
+          <ServiceBlock title="Route Management" items={routeManagement} delay={120} />
         </div>
       </section>
 
       <section className="bg-navy">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center lg:px-8">
-          <div>
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-12 sm:px-5 sm:py-14 md:flex-row md:items-center lg:px-8">
+          <Reveal>
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
               Ready for premium carrier support?
             </h2>
-            <p className="mt-2 text-white/70">Partner with FreightTech Hub and grow with confidence.</p>
-          </div>
-          <Link
-            href="/carrier-signup"
-            className="rounded-md bg-orange px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-hover"
-          >
-            Become a Carrier Partner
-          </Link>
+            <p className="mt-2 text-sm text-white/70 sm:text-base">
+              Partner with FreightTech Hub and grow with confidence.
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <Link href="/carrier-signup" className="btn-primary">
+              Become a Carrier Partner <IconArrow />
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

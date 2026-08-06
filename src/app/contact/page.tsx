@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
+import { IconArrow } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -19,13 +21,13 @@ export default function ContactPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <div>
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-5 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 lg:px-8">
+          <Reveal>
             <h2 className="font-display text-3xl font-bold text-navy">Get in touch</h2>
             <div className="section-rule mt-5" />
             <div className="mt-8 space-y-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-orange">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange sm:text-sm">
                   Email
                 </p>
                 <a
@@ -36,13 +38,16 @@ export default function ContactPage() {
                 </a>
               </div>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-orange">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange sm:text-sm">
                   Availability
                 </p>
-                <p className="mt-2 text-lg text-navy">Available 24/7</p>
+                <p className="mt-2 flex items-center gap-2 text-lg text-navy">
+                  <span className="pulse-dot h-2.5 w-2.5 rounded-full bg-orange" />
+                  Available 24/7
+                </p>
               </div>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-orange">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange sm:text-sm">
                   Coverage
                 </p>
                 <p className="mt-2 text-lg text-navy">
@@ -51,23 +56,20 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="mt-10 border border-border bg-surface p-6">
-              <h3 className="font-display text-xl font-semibold text-navy">
-                Ready to partner?
-              </h3>
+            <div className="mt-10 rounded-2xl border border-border bg-surface p-6">
+              <h3 className="font-display text-xl font-semibold text-navy">Ready to partner?</h3>
               <p className="mt-2 text-sm text-slate">
                 Skip the back-and-forth and apply to become a carrier partner.
               </p>
-              <Link
-                href="/carrier-signup"
-                className="mt-5 inline-flex rounded-md bg-orange px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-hover"
-              >
-                Become a Carrier Partner
+              <Link href="/carrier-signup" className="btn-primary mt-5 !px-5 !py-2.5">
+                Become a Carrier Partner <IconArrow />
               </Link>
             </div>
-          </div>
+          </Reveal>
 
-          <ContactForm />
+          <Reveal delay={100} direction="right">
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
     </>

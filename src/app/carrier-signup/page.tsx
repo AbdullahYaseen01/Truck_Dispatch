@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CarrierSignupForm from "@/components/CarrierSignupForm";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Carrier Sign-Up",
@@ -18,8 +19,10 @@ export default function CarrierSignupPage() {
       />
 
       <section className="bg-surface">
-        <div className="mx-auto max-w-4xl px-5 py-16 lg:px-8">
-          <CarrierSignupForm />
+        <div className="mx-auto max-w-4xl px-4 py-12 sm:px-5 sm:py-16 lg:px-8">
+          <Reveal>
+            <CarrierSignupForm />
+          </Reveal>
         </div>
       </section>
     </>
