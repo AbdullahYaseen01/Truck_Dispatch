@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
 :root {
+  --navy: #0a2540;
+  --navy-deep: #061628;
+  --navy-mid: #123558;
+  --orange: #e85d04;
+  --orange-hover: #d04f00;
+  --orange-soft: #fff4ec;
+  --white: #ffffff;
+  --slate: #5b6b7c;
+  --slate-light: #8a97a6;
+  --surface: #f5f7fa;
+  --border: #e2e8f0;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a2540;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-mid: var(--navy-mid);
+  --color-orange: var(--orange);
+  --color-orange-hover: var(--orange-hover);
+  --color-orange-soft: var(--orange-soft);
+  --color-slate: var(--slate);
+  --color-slate-light: var(--slate-light);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --font-sans: var(--font-source);
+  --font-display: var(--font-outfit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 1.2s ease-out both;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(
+      105deg,
+      rgba(6, 22, 40, 0.92) 0%,
+      rgba(10, 37, 64, 0.78) 48%,
+      rgba(10, 37, 64, 0.45) 100%
+    ),
+    linear-gradient(to top, rgba(6, 22, 40, 0.55), transparent 40%);
+}
+
+.section-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 999px;
+}
+
+.input-field {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--navy);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.15);
+}
+
+.input-field::placeholder {
+  color: var(--slate-light);
+}
+
+.check-grid label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.check-grid label:hover {
+  border-color: var(--orange);
+  background: var(--orange-soft);
+}
+
+.check-grid input {
+  accent-color: var(--orange);
 }
