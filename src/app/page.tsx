@@ -86,6 +86,8 @@ export default function HomePage() {
                 "No Forced Dispatch",
                 "Dedicated Personal Dispatcher",
                 "24/7 Support",
+                "AI Chatbot Assistance",
+                "ELD Device Services",
                 "Insurance Assistance",
                 "Factoring Setup",
                 "Back-Office Management",
@@ -116,7 +118,8 @@ export default function HomePage() {
               <p className="text-sm leading-relaxed text-white/75 sm:text-base">
                 At FreightTech Hub, we help owner-operators and trucking companies maximize revenue
                 through professional dispatch, premium load sourcing, route planning, paperwork
-                management, insurance assistance, factoring setup, and complete back-office support.
+                management, insurance assistance, factoring setup, AI chatbot support, ELD device
+                services, and complete back-office support.
               </p>
             </Reveal>
           </div>

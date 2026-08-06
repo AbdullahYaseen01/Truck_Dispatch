@@ -1,8 +1,10 @@
 import {
   IconCash,
+  IconChatbot,
   IconClock,
   IconDispatch,
   IconDocs,
+  IconEld,
   IconRoute,
   IconShield,
 } from "@/components/Icons";
@@ -14,6 +16,8 @@ const map = {
   docs: IconDocs,
   route: IconRoute,
   clock: IconClock,
+  chatbot: IconChatbot,
+  eld: IconEld,
 } as const;
 
 export default function ServiceIcon({

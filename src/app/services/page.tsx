@@ -4,9 +4,11 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import {
+  aiChatbotServices,
   backOfficeServices,
   carrierSupport,
   dispatchServices,
+  eldDeviceServices,
   factoringAssistance,
   insuranceAssistance,
   routeManagement,
@@ -15,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Dispatch, carrier support, back office, insurance, factoring, and route management services from FreightTech Hub.",
+    "Dispatch, carrier support, AI chatbot, ELD devices, insurance, factoring, and back-office services from FreightTech Hub.",
 };
 
 function ServiceBlock({
@@ -56,7 +58,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Complete dispatch & carrier support services"
-        subtitle="Professional dispatch, premium load sourcing, compliance, insurance, factoring, and back-office management — all under one roof."
+        subtitle="Professional dispatch, AI chatbot support, ELD device services, compliance, insurance, factoring, and back-office management — all under one roof."
       />
 
       <section className="bg-surface">
@@ -77,6 +79,18 @@ export default function ServicesPage() {
             delay={100}
           />
           <ServiceBlock title="Route Management" items={routeManagement} delay={120} />
+          <ServiceBlock
+            title="AI Chatbot"
+            intro="Technology-driven AI chatbot support that keeps carriers informed and connected around the clock:"
+            items={aiChatbotServices}
+            delay={140}
+          />
+          <ServiceBlock
+            title="ELD Device Service Provider"
+            intro="We help carriers choose, set up, and manage reliable ELD solutions for compliance and peace of mind:"
+            items={eldDeviceServices}
+            delay={160}
+          />
         </div>
       </section>
 

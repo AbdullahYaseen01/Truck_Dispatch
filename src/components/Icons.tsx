@@ -67,6 +67,31 @@ export function IconClock({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function IconChatbot({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v6A2.5 2.5 0 0 1 16.5 15H12l-3.5 3.2V15H7.5A2.5 2.5 0 0 1 5 12.5v-6Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle cx="9.2" cy="9.2" r="1" fill="currentColor" />
+      <circle cx="12" cy="9.2" r="1" fill="currentColor" />
+      <circle cx="14.8" cy="9.2" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function IconEld({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="3.5" width="16" height="17" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="16.5" cy="16" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function IconCheck({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 20 20" fill="none" aria-hidden="true">

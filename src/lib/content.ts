@@ -34,6 +34,18 @@ export const servicesOverview = [
     description: "Around-the-clock coordination so drivers stay focused on the road.",
     icon: "clock" as const,
   },
+  {
+    title: "AI Chatbot",
+    description:
+      "Smart AI chatbot support for faster answers on loads, paperwork status, and carrier questions.",
+    icon: "chatbot" as const,
+  },
+  {
+    title: "ELD Devices",
+    description:
+      "Trusted ELD device service provider help — setup, recommendations, and compliance-ready solutions.",
+    icon: "eld" as const,
+  },
 ];
 
 export const dispatchServices = [
@@ -103,6 +115,28 @@ export const routeManagement = [
   "Return Load Planning",
 ];
 
+export const aiChatbotServices = [
+  "24/7 AI Carrier Assistance",
+  "Instant Load & Status Updates",
+  "FAQ & Operations Support",
+  "Dispatcher Handoff When Needed",
+  "Document & Paperwork Guidance",
+  "Multilingual Chat Support",
+  "Faster Response Times",
+  "Always-On Driver Communication",
+];
+
+export const eldDeviceServices = [
+  "ELD Device Recommendations",
+  "Trusted ELD Provider Setup",
+  "Device Installation Guidance",
+  "FMCSA Compliance Support",
+  "Account Activation Assistance",
+  "Driver Training Support",
+  "Troubleshooting Help",
+  "ELD Transfer & Switchover Support",
+];
+
 export const equipmentList = [
   {
     name: "Dry Van",
@@ -154,6 +188,8 @@ export const whyChooseUs = [
   "Carrier Growth Strategy",
   "Reliable Communication",
   "Technology Driven Dispatch",
+  "AI Chatbot Support",
+  "ELD Device Service Provider",
 ];
 
 export const testimonials = [
