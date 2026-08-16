@@ -131,13 +131,17 @@ export default function CarrierSignupForm() {
     };
 
     try {
-      await fetch("/api/registrations", {
+      const res = await fetch("/api/registrations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-    } catch {
-      // Still continue; email draft remains as backup
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        console.error("Registration save failed", err);
+      }
+    } catch (error) {
+      console.error("Registration save error", error);
     }
 
     const emailBody = [
