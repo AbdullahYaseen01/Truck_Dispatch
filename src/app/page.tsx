@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
-import MovingTruckStrip from "@/components/MovingTruck";
+import MovingTruckStrip, { BigHeroTruck, EquipmentTruckIcon } from "@/components/MovingTruck";
+import type { TruckType } from "@/components/MovingTruck";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import {
   equipmentList,
@@ -12,6 +13,17 @@ import {
   trustStats,
   whyChooseUs,
 } from "@/lib/content";
+
+const equipmentTypeMap: Record<string, TruckType> = {
+  "Dry Van": "dryvan",
+  Reefer: "reefer",
+  Flatbed: "flatbed",
+  "Step Deck": "stepdeck",
+  Conestoga: "conestoga",
+  "Box Truck": "boxtruck",
+  "Power Only": "poweronly",
+  Hotshot: "hotshot",
+};
 
 export default function HomePage() {
   return (
@@ -29,7 +41,7 @@ export default function HomePage() {
         <div className="hero-overlay absolute inset-0" />
         <div className="grain" />
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 py-24 sm:min-h-[88vh] sm:px-5 lg:px-8">
+        <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-36 pt-24 sm:min-h-[88vh] sm:px-5 sm:pb-40 lg:px-8">
           <div className="animate-fade-up mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-orange backdrop-blur-md sm:text-sm">
             <span className="pulse-dot h-2 w-2 rounded-full bg-orange" />
             FreightTech Hub
@@ -88,11 +100,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block">
+        <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block">
           <div className="animate-float flex h-10 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
             <span className="h-2 w-1 rounded-full bg-orange" />
           </div>
         </div>
+
+        <BigHeroTruck tone="light" />
       </section>
 
       {/* Feature bar */}
@@ -116,7 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <MovingTruckStrip tone="navy" />
+      <MovingTruckStrip tone="navy" size="lg" />
 
       {/* Marquee trust strip */}
       <section className="overflow-hidden border-y border-white/10 bg-navy-deep text-white">
@@ -214,7 +228,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <MovingTruckStrip tone="surface" />
+      <MovingTruckStrip tone="surface" size="lg" />
 
       {/* Equipment */}
       <section className="bg-white">
@@ -238,8 +252,14 @@ export default function HomePage() {
           <div className="mt-12 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {equipmentList.map((item, i) => (
               <Reveal key={item.name} delay={i * 50}>
-                <div className="card-lift h-full rounded-xl border border-transparent border-l-[3px] border-l-orange bg-surface px-5 py-7 shadow-sm shadow-navy/5">
-                  <h3 className="font-display text-lg font-semibold text-navy">{item.name}</h3>
+                <div className="card-lift h-full rounded-xl border border-transparent border-l-[3px] border-l-orange bg-surface px-5 py-6 shadow-sm shadow-navy/5">
+                  <div className="equip-icon-wrap text-navy">
+                    <EquipmentTruckIcon
+                      type={equipmentTypeMap[item.name] ?? "dryvan"}
+                      className="h-12 w-24"
+                    />
+                  </div>
+                  <h3 className="mt-3 font-display text-lg font-semibold text-navy">{item.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate">{item.description}</p>
                 </div>
               </Reveal>
@@ -409,7 +429,7 @@ export default function HomePage() {
             </div>
           </Reveal>
         </div>
-        <MovingTruckStrip tone="navy" />
+        <MovingTruckStrip tone="navy" size="lg" />
       </section>
     </>
   );

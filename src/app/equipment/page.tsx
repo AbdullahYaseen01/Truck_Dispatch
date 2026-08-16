@@ -3,12 +3,25 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { IconArrow } from "@/components/Icons";
+import MovingTruckStrip, { EquipmentTruckIcon } from "@/components/MovingTruck";
+import type { TruckType } from "@/components/MovingTruck";
 import { equipmentList } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Equipment We Dispatch",
   description:
     "FreightTech Hub dispatches Dry Van, Reefer, Flatbed, Step Deck, Conestoga, Box Truck, Power Only, and Hotshot equipment.",
+};
+
+const typeMap: Record<string, TruckType> = {
+  "Dry Van": "dryvan",
+  Reefer: "reefer",
+  Flatbed: "flatbed",
+  "Step Deck": "stepdeck",
+  Conestoga: "conestoga",
+  "Box Truck": "boxtruck",
+  "Power Only": "poweronly",
+  Hotshot: "hotshot",
 };
 
 export default function EquipmentPage() {
@@ -19,6 +32,8 @@ export default function EquipmentPage() {
         title="Equipment we dispatch"
         subtitle="From dry van to hotshot, we match the right freight to the equipment you run."
       />
+
+      <MovingTruckStrip tone="navy" size="lg" />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-20 lg:px-8">
@@ -33,10 +48,13 @@ export default function EquipmentPage() {
             {equipmentList.map((item, index) => (
               <Reveal key={item.name} delay={index * 50}>
                 <article className="card-lift group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-7">
-                  <span className="font-display text-4xl font-extrabold text-navy/10 transition group-hover:text-orange/25">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="mt-3 font-display text-xl font-semibold text-navy">{item.name}</h2>
+                  <div className="equip-icon-wrap text-navy">
+                    <EquipmentTruckIcon
+                      type={typeMap[item.name] ?? "dryvan"}
+                      className="h-14 w-28"
+                    />
+                  </div>
+                  <h2 className="mt-4 font-display text-xl font-semibold text-navy">{item.name}</h2>
                   <p className="mt-3 text-sm leading-relaxed text-slate">{item.description}</p>
                 </article>
               </Reveal>

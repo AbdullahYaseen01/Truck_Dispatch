@@ -142,19 +142,19 @@ h4 {
     transform: translateX(0);
   }
   50% {
-    transform: translateX(5px);
+    transform: translateX(6px);
   }
 }
 
 @keyframes truck-speed-pulse {
   0%,
   100% {
-    opacity: 0.25;
+    opacity: 0.2;
     transform: translateX(0);
   }
   50% {
-    opacity: 0.85;
-    transform: translateX(-3px);
+    opacity: 0.9;
+    transform: translateX(-5px);
   }
 }
 
@@ -170,13 +170,47 @@ h4 {
 @keyframes truck-bob {
   0%,
   100% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0);
   }
-  25% {
-    transform: translateY(-2px) translateX(3px);
+  50% {
+    transform: translateY(-3px);
   }
-  75% {
-    transform: translateY(1px) translateX(-2px);
+}
+
+@keyframes wheel-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes highway-dash {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -48px 0;
+  }
+}
+
+@keyframes hero-truck-run {
+  0% {
+    transform: translateX(-55vw);
+  }
+  100% {
+    transform: translateX(115vw);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
 
@@ -411,22 +445,77 @@ h4 {
 }
 
 .truck-drive {
-  animation: truck-bob 2.4s ease-in-out infinite;
-  transform-origin: center;
+  animation: truck-bob 2.2s ease-in-out infinite;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 6px 10px rgba(6, 22, 40, 0.18));
 }
 
 .truck-drive .truck-speed {
-  animation: truck-speed-pulse 1.2s ease-in-out infinite;
+  animation: truck-speed-pulse 0.9s ease-in-out infinite;
+}
+
+.truck-drive .truck-wheel {
+  animation: wheel-spin 0.7s linear infinite;
+  transform-box: fill-box;
 }
 
 .truck-convoy {
   display: flex;
   width: max-content;
-  animation: truck-convoy 22s linear infinite;
+  animation: truck-convoy 32s linear infinite;
+  will-change: transform;
 }
 
 .truck-convoy:hover {
   animation-play-state: paused;
+}
+
+.truck-highway {
+  isolation: isolate;
+}
+
+.highway-dashes {
+  height: 3px;
+  width: 100%;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 40%,
+    var(--orange) 40%,
+    var(--orange) 70%,
+    transparent 70%
+  );
+  background-size: 48px 3px;
+  opacity: 0.55;
+  animation: highway-dash 0.55s linear infinite;
+}
+
+.hero-dashes {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 45%,
+    rgba(232, 93, 4, 0.85) 45%,
+    rgba(232, 93, 4, 0.85) 70%,
+    transparent 70%
+  );
+  background-size: 56px 2px;
+  background-repeat: repeat-x;
+  animation: highway-dash 0.45s linear infinite;
+}
+
+.hero-truck-run {
+  animation: hero-truck-run 18s linear infinite;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4));
+}
+
+.hero-truck-lane::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 70%;
+  background: linear-gradient(to top, rgba(6, 22, 40, 0.55), transparent);
+  pointer-events: none;
 }
 
 .service-truck-card {
@@ -437,19 +526,28 @@ h4 {
 .service-truck-card::after {
   content: "";
   position: absolute;
-  right: -8%;
-  bottom: 12%;
-  width: 88px;
-  height: 36px;
-  opacity: 0.08;
+  right: -6%;
+  bottom: 10%;
+  width: 110px;
+  height: 46px;
+  opacity: 0.1;
   background: currentColor;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath fill='black' d='M2 16h22v7H2v-7Zm22-4h8.5L38 18v5H24V12Zm-15 10.5a2.6 2.6 0 1 0 0.01 0Zm23.5 0a2.6 2.6 0 1 0 0.01 0Z'/%3E%3C/svg%3E")
     center / contain no-repeat;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath fill='black' d='M2 16h22v7H2v-7Zm22-4h8.5L38 18v5H24V12Zm-15 10.5a2.6 2.6 0 1 0 0.01 0Zm23.5 0a2.6 2.6 0 1 0 0.01 0Z'/%3E%3C/svg%3E")
     center / contain no-repeat;
-  animation: truck-drive 3s ease-in-out infinite;
+  animation: truck-drive 2.8s ease-in-out infinite;
   color: var(--navy);
   pointer-events: none;
+}
+
+.equip-icon-wrap {
+  display: inline-flex;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-lift:hover .equip-icon-wrap {
+  transform: translateX(8px);
 }
 
 .mobile-drawer {
@@ -565,6 +663,10 @@ h4 {
 
   .truck-drive,
   .truck-convoy,
+  .truck-drive .truck-wheel,
+  .highway-dashes,
+  .hero-dashes,
+  .hero-truck-run,
   .service-truck-card::after {
     animation: none !important;
   }
