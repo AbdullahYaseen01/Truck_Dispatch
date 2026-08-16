@@ -41,6 +41,7 @@ export default function HeroSection() {
           playsInline
           preload="auto"
           poster="/videos/hero-poster.jpg"
+          aria-label="Semi truck driving on highway"
           aria-hidden="true"
         >
           <source src="/videos/hero-highway.mp4" type="video/mp4" />
