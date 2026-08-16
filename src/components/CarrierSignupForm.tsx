@@ -70,7 +70,7 @@ export default function CarrierSignupForm() {
     setStep((s) => Math.max(s - 1, 0));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
 
@@ -98,48 +98,88 @@ export default function CarrierSignupForm() {
 
     const data = new FormData(form);
 
-    const payload = [
+    const payload = {
+      companyName: String(data.get("companyName") || ""),
+      ownerName: String(data.get("ownerName") || ""),
+      dispatchContact: String(data.get("dispatchContact") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      mcNumber: String(data.get("mcNumber") || ""),
+      dotNumber: String(data.get("dotNumber") || ""),
+      ein: String(data.get("ein") || ""),
+      yearsInBusiness: String(data.get("yearsInBusiness") || ""),
+      equipment,
+      numberOfDrivers: String(data.get("numberOfDrivers") || ""),
+      numberOfTrucks: String(data.get("numberOfTrucks") || ""),
+      truckYear: String(data.get("truckYear") || ""),
+      truckMake: String(data.get("truckMake") || ""),
+      truckModel: String(data.get("truckModel") || ""),
+      eldProvider: String(data.get("eldProvider") || ""),
+      currentLocation: String(data.get("currentLocation") || ""),
+      preferredStates: String(data.get("preferredStates") || ""),
+      preferredLanes: String(data.get("preferredLanes") || ""),
+      insuranceCompany: String(data.get("insuranceCompany") || ""),
+      policyExpiration: String(data.get("policyExpiration") || ""),
+      cargoInsurance: String(data.get("cargoInsurance") || ""),
+      liabilityInsurance: String(data.get("liabilityInsurance") || ""),
+      isFactoring: String(data.get("isFactoring") || ""),
+      factoringCompany: String(data.get("factoringCompany") || ""),
+      needFactoringHelp: String(data.get("needFactoringHelp") || ""),
+      specialRequirements: String(data.get("specialRequirements") || ""),
+      preferredBrokers: String(data.get("preferredBrokers") || ""),
+      comments: String(data.get("comments") || ""),
+    };
+
+    try {
+      await fetch("/api/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      // Still continue; email draft remains as backup
+    }
+
+    const emailBody = [
       "New Carrier Partner Application",
       "",
-      `Company: ${data.get("companyName")}`,
-      `Owner: ${data.get("ownerName")}`,
-      `Dispatch Contact: ${data.get("dispatchContact")}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone")}`,
+      `Company: ${payload.companyName}`,
+      `Owner: ${payload.ownerName}`,
+      `Dispatch Contact: ${payload.dispatchContact}`,
+      `Email: ${payload.email}`,
+      `Phone: ${payload.phone}`,
       "",
-      `MC: ${data.get("mcNumber")}`,
-      `DOT: ${data.get("dotNumber")}`,
-      `EIN: ${data.get("ein") || "N/A"}`,
-      `Years in Business: ${data.get("yearsInBusiness") || "N/A"}`,
+      `MC: ${payload.mcNumber}`,
+      `DOT: ${payload.dotNumber}`,
+      `EIN: ${payload.ein || "N/A"}`,
+      `Years in Business: ${payload.yearsInBusiness || "N/A"}`,
       "",
-      `Equipment: ${equipment.join(", ") || "Not specified"}`,
-      `Drivers: ${data.get("numberOfDrivers") || "N/A"}`,
-      `Trucks: ${data.get("numberOfTrucks") || "N/A"}`,
-      `Truck: ${[data.get("truckYear"), data.get("truckMake"), data.get("truckModel")]
+      `Equipment: ${payload.equipment.join(", ") || "Not specified"}`,
+      `Drivers: ${payload.numberOfDrivers || "N/A"}`,
+      `Trucks: ${payload.numberOfTrucks || "N/A"}`,
+      `Truck: ${[payload.truckYear, payload.truckMake, payload.truckModel]
         .filter(Boolean)
         .join(" ") || "N/A"}`,
-      `ELD: ${data.get("eldProvider") || "N/A"}`,
-      `Location: ${data.get("currentLocation") || "N/A"}`,
-      `Preferred States: ${data.get("preferredStates") || "N/A"}`,
-      `Preferred Lanes: ${data.get("preferredLanes") || "N/A"}`,
+      `ELD: ${payload.eldProvider || "N/A"}`,
+      `Location: ${payload.currentLocation || "N/A"}`,
+      `Preferred States: ${payload.preferredStates || "N/A"}`,
+      `Preferred Lanes: ${payload.preferredLanes || "N/A"}`,
       "",
-      `Insurance Co: ${data.get("insuranceCompany") || "N/A"}`,
-      `Policy Exp: ${data.get("policyExpiration") || "N/A"}`,
-      `Factoring: ${data.get("isFactoring") || "N/A"}`,
-      `Factoring Company: ${data.get("factoringCompany") || "N/A"}`,
-      `Need Factoring Help: ${data.get("needFactoringHelp") || "N/A"}`,
+      `Insurance Co: ${payload.insuranceCompany || "N/A"}`,
+      `Policy Exp: ${payload.policyExpiration || "N/A"}`,
+      `Factoring: ${payload.isFactoring || "N/A"}`,
+      `Factoring Company: ${payload.factoringCompany || "N/A"}`,
+      `Need Factoring Help: ${payload.needFactoringHelp || "N/A"}`,
       "",
-      `Special Requirements: ${data.get("specialRequirements") || "N/A"}`,
-      `Preferred Brokers: ${data.get("preferredBrokers") || "N/A"}`,
-      `Comments: ${data.get("comments") || "N/A"}`,
-      "",
-      "Note: Document files selected in the browser should be attached manually or sent separately.",
+      `Special Requirements: ${payload.specialRequirements || "N/A"}`,
+      `Preferred Brokers: ${payload.preferredBrokers || "N/A"}`,
+      `Comments: ${payload.comments || "N/A"}`,
     ].join("\n");
 
     const subject = encodeURIComponent(
-      `Carrier Partner Application — ${data.get("companyName") || "New Carrier"}`
+      `Carrier Partner Application — ${payload.companyName || "New Carrier"}`
     );
-    const body = encodeURIComponent(payload);
+    const body = encodeURIComponent(emailBody);
     window.location.href = `mailto:info@freighttechhub.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -158,8 +198,8 @@ export default function CarrierSignupForm() {
           Welcome to FreightTech Hub
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-sm text-slate sm:text-base">
-          Your application summary is ready in your email client. Send it to complete your request,
-          then attach any supporting documents. Our team will follow up shortly.
+          Your application has been saved to our admin portal. An email draft is also ready if you
+          want to send documents to our team. We will follow up shortly.
         </p>
         <a href="mailto:info@freighttechhub.com" className="btn-primary mt-8">
           Email info@freighttechhub.com

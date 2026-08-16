@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Source_Sans_3 } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MobileCta from "@/components/MobileCta";
+import SiteShell from "@/components/SiteShell";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
     "factoring assistance",
     "trucking back office",
   ],
-  metadataBase: new URL("https://freighttech-hub.vercel.app"),
+  metadataBase: new URL("https://freighttechhub.com"),
   openGraph: {
     title: "FreightTech Hub | All-in-One Carrier Support",
     description:
@@ -53,10 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${outfit.variable} ${sourceSans.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
-        <Header />
-        <main className="flex-1 pb-20 sm:pb-0">{children}</main>
-        <Footer />
-        <MobileCta />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
