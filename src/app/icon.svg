@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FreightTech Hub">
+  <rect width="64" height="64" rx="14" fill="#061628"/>
+  <path fill="#0a2540" d="M8 28h30v18H8z"/>
+  <path fill="#e85d04" d="M38 22h12l8 10v14H38V22z"/>
+  <path fill="#fff" opacity=".9" d="M42 26h7l4.5 6H42z"/>
+  <circle cx="18" cy="48" r="5" fill="#e85d04"/>
+  <circle cx="18" cy="48" r="2" fill="#061628"/>
+  <circle cx="48" cy="48" r="5" fill="#e85d04"/>
+  <circle cx="48" cy="48" r="2" fill="#061628"/>
+  <rect x="12" y="32" width="20" height="3" rx="1.5" fill="#fff" opacity=".25"/>
+  <rect x="40" y="40" width="5" height="3" rx="1" fill="#ff9a4a"/>
+</svg>

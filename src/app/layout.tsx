@@ -33,6 +33,13 @@ export const metadata: Metadata = {
     "trucking back office",
   ],
   metadataBase: new URL("https://freighttechhub.com"),
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png" }],
+  },
   openGraph: {
     title: "FreightTech Hub | All-in-One Carrier Support",
     description:
