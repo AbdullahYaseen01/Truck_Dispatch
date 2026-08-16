@@ -67,27 +67,59 @@ export function IconClock({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+/** Moving truck icon used for AI Chatbot service cards */
 export function IconChatbot({ className = "h-6 w-6" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg className={`truck-drive ${className}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 11h11v6H2v-6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
       <path
-        d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v6A2.5 2.5 0 0 1 16.5 15H12l-3.5 3.2V15H7.5A2.5 2.5 0 0 1 5 12.5v-6Z"
+        d="M13 8h4.2L20 12.2V17h-7V8Z"
         stroke="currentColor"
         strokeWidth="1.8"
+        strokeLinejoin="round"
       />
-      <circle cx="9.2" cy="9.2" r="1" fill="currentColor" />
-      <circle cx="12" cy="9.2" r="1" fill="currentColor" />
-      <circle cx="14.8" cy="9.2" r="1" fill="currentColor" />
+      <path d="M15 10h2.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="5.5" cy="17.5" r="1.5" fill="currentColor" />
+      <circle cx="17" cy="17.5" r="1.5" fill="currentColor" />
+      <path
+        className="truck-speed"
+        d="M1 7.5h3.5M0.5 9.5h2.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        opacity="0.6"
+      />
+      {/* chat spark on cab */}
+      <circle cx="16.2" cy="6" r="2.2" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M16.2 5.2v1.6M15.4 6h1.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
 }
 
+/** Moving truck + ELD badge for ELD Service Provider */
 export function IconEld({ className = "h-6 w-6" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4" y="3.5" width="16" height="17" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <circle cx="16.5" cy="16" r="1.2" fill="currentColor" />
+    <svg className={`truck-drive ${className}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 11h11v6H2v-6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path
+        d="M13 8h4.2L20 12.2V17h-7V8Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <circle cx="5.5" cy="17.5" r="1.5" fill="currentColor" />
+      <circle cx="17" cy="17.5" r="1.5" fill="currentColor" />
+      <path
+        className="truck-speed"
+        d="M1 7.5h3.5M0.5 9.5h2.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        opacity="0.6"
+      />
+      {/* ELD device badge */}
+      <rect x="14.2" y="3.2" width="6.2" height="4.6" rx="0.8" stroke="currentColor" strokeWidth="1.3" />
+      <path d="M15.4 4.6h3.8M15.4 6.2h2.4" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
     </svg>
   );
 }

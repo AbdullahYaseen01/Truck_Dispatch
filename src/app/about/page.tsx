@@ -72,7 +72,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Carrier-first partnership",
-                body: "No forced dispatch and no long-term contracts — just transparent support built around your goals.",
+                body: "No long-term contracts — just transparent support built around your goals, with AI chatbot and ELD service provider options.",
               },
               {
                 title: "Full back-office coverage",

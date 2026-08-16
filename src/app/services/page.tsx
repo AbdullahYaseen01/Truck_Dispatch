@@ -86,7 +86,7 @@ export default function ServicesPage() {
             delay={140}
           />
           <ServiceBlock
-            title="ELD Device Service Provider"
+            title="ELD Service Provider"
             intro="We help carriers choose, set up, and manage reliable ELD solutions for compliance and peace of mind:"
             items={eldDeviceServices}
             delay={160}

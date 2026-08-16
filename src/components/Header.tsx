@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -45,14 +46,19 @@ export default function Header() {
           : "border-b border-transparent bg-navy-deep/90 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-5 lg:px-8">
-        <Link href="/" className="group flex min-w-0 items-center gap-2.5 sm:gap-3">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange font-display text-base font-bold text-white shadow-md shadow-orange/30 transition group-hover:scale-105 sm:h-10 sm:w-10 sm:text-lg">
-            FT
-          </span>
-          <span className="truncate font-display text-base font-semibold tracking-tight text-white sm:text-xl">
-            FreightTech <span className="text-orange">Hub</span>
-          </span>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-5 lg:px-8">
+        <Link
+          href="/"
+          className="flex min-w-0 items-center rounded-xl bg-white px-2 py-1 shadow-md shadow-black/15 transition hover:scale-[1.01] sm:px-2.5 sm:py-1.5"
+        >
+          <Image
+            src="/fth-logo.png"
+            alt="Freight Tech Hub"
+            width={220}
+            height={88}
+            priority
+            className="h-10 w-auto object-contain sm:h-11 md:h-12"
+          />
         </Link>
 
         <nav className="hidden items-center gap-0.5 xl:flex">

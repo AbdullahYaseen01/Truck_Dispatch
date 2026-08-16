@@ -39,12 +39,14 @@ export const servicesOverview = [
     description:
       "Smart AI chatbot support for faster answers on loads, paperwork status, and carrier questions.",
     icon: "chatbot" as const,
+    featured: true,
   },
   {
-    title: "ELD Devices",
+    title: "ELD Service Provider",
     description:
-      "Trusted ELD device service provider help — setup, recommendations, and compliance-ready solutions.",
+      "Trusted ELD service provider help — device setup, recommendations, and compliance-ready solutions.",
     icon: "eld" as const,
+    featured: true,
   },
 ];
 
@@ -174,7 +176,6 @@ export const equipmentList = [
 
 export const whyChooseUs = [
   "Dedicated Personal Dispatcher",
-  "No Forced Dispatch",
   "No Long-Term Contracts",
   "Best Market Rates",
   "Experienced Negotiators",
@@ -189,7 +190,7 @@ export const whyChooseUs = [
   "Reliable Communication",
   "Technology Driven Dispatch",
   "AI Chatbot Support",
-  "ELD Device Service Provider",
+  "ELD Service Provider",
 ];
 
 export const testimonials = [
@@ -207,7 +208,7 @@ export const testimonials = [
   },
   {
     quote:
-      "No forced dispatch, clear communication, and someone always available. That reliability is why we stay with FreightTech Hub.",
+      "Clear communication and someone always available. That reliability is why we stay with FreightTech Hub.",
     name: "James T.",
     role: "Flatbed Carrier",
   },
@@ -237,6 +238,6 @@ export const processSteps = [
 export const trustStats = [
   { value: "24/7", label: "Dispatch Support" },
   { value: "USA", label: "Nationwide Coverage" },
-  { value: "0", label: "Forced Dispatch" },
-  { value: "1", label: "Dedicated Dispatcher" },
+  { value: "AI", label: "Chatbot Assistance" },
+  { value: "ELD", label: "Service Provider" },
 ];

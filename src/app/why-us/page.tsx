@@ -8,7 +8,7 @@ import { whyChooseUs } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Why Choose Us",
   description:
-    "Why carriers choose FreightTech Hub — dedicated dispatchers, no forced dispatch, 24/7 support, and technology-driven growth.",
+    "Why carriers choose FreightTech Hub — dedicated dispatchers, 24/7 support, AI chatbot, ELD services, and technology-driven growth.",
 };
 
 export default function WhyUsPage() {

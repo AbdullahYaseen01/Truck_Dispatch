@@ -136,6 +136,50 @@ h4 {
   }
 }
 
+@keyframes truck-drive {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes truck-speed-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes truck-convoy {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes truck-bob {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-2px) translateX(3px);
+  }
+  75% {
+    transform: translateY(1px) translateX(-2px);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -366,6 +410,48 @@ h4 {
   animation-play-state: paused;
 }
 
+.truck-drive {
+  animation: truck-bob 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.truck-drive .truck-speed {
+  animation: truck-speed-pulse 1.2s ease-in-out infinite;
+}
+
+.truck-convoy {
+  display: flex;
+  width: max-content;
+  animation: truck-convoy 22s linear infinite;
+}
+
+.truck-convoy:hover {
+  animation-play-state: paused;
+}
+
+.service-truck-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-truck-card::after {
+  content: "";
+  position: absolute;
+  right: -8%;
+  bottom: 12%;
+  width: 88px;
+  height: 36px;
+  opacity: 0.08;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath fill='black' d='M2 16h22v7H2v-7Zm22-4h8.5L38 18v5H24V12Zm-15 10.5a2.6 2.6 0 1 0 0.01 0Zm23.5 0a2.6 2.6 0 1 0 0.01 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath fill='black' d='M2 16h22v7H2v-7Zm22-4h8.5L38 18v5H24V12Zm-15 10.5a2.6 2.6 0 1 0 0.01 0Zm23.5 0a2.6 2.6 0 1 0 0.01 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  animation: truck-drive 3s ease-in-out infinite;
+  color: var(--navy);
+  pointer-events: none;
+}
+
 .mobile-drawer {
   animation: slide-in-right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -475,5 +561,11 @@ h4 {
   .reveal-scale {
     opacity: 1;
     transform: none;
+  }
+
+  .truck-drive,
+  .truck-convoy,
+  .service-truck-card::after {
+    animation: none !important;
   }
 }
