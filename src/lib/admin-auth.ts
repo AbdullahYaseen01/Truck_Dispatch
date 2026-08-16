@@ -5,7 +5,7 @@ const COOKIE_NAME = "fth_admin_session";
 const SESSION_DAYS = 7;
 
 export function getAdminPassword(): string {
-  return process.env.ADMIN_PASSWORD || "FreightTech@Admin2026";
+  return process.env.ADMIN_PASSWORD || "8888";
 }
 
 function getSecret(): string {
