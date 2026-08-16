@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -19,14 +19,8 @@ export default function Footer() {
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-5 md:grid-cols-3 lg:px-8">
         <div>
-          <div className="mb-4 inline-flex rounded-xl bg-white px-3 py-2 shadow-lg shadow-black/20">
-            <Image
-              src="/fth-logo.png"
-              alt="Freight Tech Hub"
-              width={240}
-              height={96}
-              className="h-14 w-auto object-contain sm:h-16"
-            />
+          <div className="mb-5">
+            <BrandLogo variant="light" className="h-14 w-auto sm:h-16" />
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/70">
             Smart Dispatch. Stronger Growth.

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
-import MovingTruckStrip, { BigHeroTruck, EquipmentTruckIcon } from "@/components/MovingTruck";
+import HeroSection from "@/components/HeroSection";
+import MovingTruckStrip, { EquipmentTruckIcon } from "@/components/MovingTruck";
 import type { TruckType } from "@/components/MovingTruck";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import {
@@ -10,7 +11,6 @@ import {
   processSteps,
   servicesOverview,
   testimonials,
-  trustStats,
   whyChooseUs,
 } from "@/lib/content";
 
@@ -28,86 +28,7 @@ const equipmentTypeMap: Record<string, TruckType> = {
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[100svh] overflow-hidden sm:min-h-[88vh]">
-        <Image
-          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=2400&q=80"
-          alt="Semi truck on highway at dusk"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover animate-ken-burns"
-        />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="grain" />
-
-        <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-36 pt-24 sm:min-h-[88vh] sm:px-5 sm:pb-40 lg:px-8">
-          <div className="animate-fade-up mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-orange backdrop-blur-md sm:text-sm">
-            <span className="pulse-dot h-2 w-2 rounded-full bg-orange" />
-            FreightTech Hub
-          </div>
-
-          <h1 className="animate-fade-up delay-100 max-w-4xl font-display text-[2.6rem] font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-            Powering Freight.
-            <br />
-            <span className="text-orange">Driving Growth.</span>
-          </h1>
-
-          <p className="animate-fade-up delay-200 mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:mt-6 sm:text-xl">
-            All-in-one Dispatch &amp; Carrier Solutions to Maximize Your Revenue.
-          </p>
-
-          <ul className="animate-fade-up delay-300 mt-8 grid max-w-2xl gap-2 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-2.5">
-            {[
-              "High Paying Loads",
-              "Insurance Assistance",
-              "24/7 Dispatch Support",
-              "Factoring Setup",
-              "Route Optimization",
-              "Back Office Support",
-              "AI Chatbot",
-              "ELD Service Provider",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-sm text-white/85">
-                <span className="text-orange">
-                  <IconCheck className="h-4 w-4" />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="animate-fade-up delay-400 mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap">
-            <Link href="/carrier-signup" className="btn-primary">
-              Become a Carrier
-              <IconArrow />
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Contact Us
-            </Link>
-          </div>
-
-          <div className="animate-fade-up delay-500 mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-4">
-            {trustStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="stat-chip rounded-xl border border-white/10 bg-white/8 px-3 py-3 backdrop-blur-md"
-              >
-                <p className="font-display text-xl font-bold text-white sm:text-2xl">{stat.value}</p>
-                <p className="mt-1 text-[11px] leading-snug text-white/65 sm:text-xs">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block">
-          <div className="animate-float flex h-10 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
-            <span className="h-2 w-1 rounded-full bg-orange" />
-          </div>
-        </div>
-
-        <BigHeroTruck tone="light" />
-      </section>
+      <HeroSection />
 
       {/* Feature bar */}
       <section className="bg-navy text-white">

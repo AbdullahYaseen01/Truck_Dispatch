@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import BrandLogo from "@/components/BrandLogo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -47,19 +47,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-5 lg:px-8">
-        <Link
-          href="/"
-          className="flex min-w-0 items-center rounded-xl bg-white px-2 py-1 shadow-md shadow-black/15 transition hover:scale-[1.01] sm:px-2.5 sm:py-1.5"
-        >
-          <Image
-            src="/fth-logo.png"
-            alt="Freight Tech Hub"
-            width={220}
-            height={88}
-            priority
-            className="h-10 w-auto object-contain sm:h-11 md:h-12"
-          />
-        </Link>
+        <BrandLogo variant="light" priority className="h-10 w-auto sm:h-11 md:h-[3.25rem]" />
 
         <nav className="hidden items-center gap-0.5 xl:flex">
           {navLinks.map((link) => {
